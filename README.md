@@ -132,20 +132,19 @@ otherwise you will get errors on start because of JSON comments.**
     "stratum": {
       "enabled": false,
       // Bind stratum mining socket to this IP:PORT
-      "listen": "0.0.0.0:8008",
+      "listen": "0.0.0.0:5554",
       "timeout": "120s",
       "maxConn": 8192
     },
-		 // Stratum+SSL mining endpoint. Warning: cannot be used jointly with Stratum. To run both, start two separate instances of the proxy
-   "stratum_ssl": {
-			"enabled": true,
-			"listen": "0.0.0.0:5555",
-			"timeout": "120s",
-			"maxConn": 8,
-			"certfile": "~/certificates/self/pub.crt",
-			"certkey": "~/certificates/self/priv.key"
-		},
-
+   // Stratum+SSL mining endpoint. Warning: cannot be used jointly with Stratum. To run both, start two separate instances of the proxy
+    "stratum_ssl": {
+	"enabled": true,
+	"listen": "0.0.0.0:5555",
+	"timeout": "120s",
+	"maxConn": 8192,
+	"certfile": "pub.crt",
+	"certkey": "priv.key"
+    },
     // Try to get new job from geth in this interval
     "blockRefreshInterval": "120ms",
     "stateUpdateInterval": "3s",
