@@ -19,7 +19,7 @@
 		"maxFails": 100,
 
 		"stratum": {
-			"enabled": true,
+			"enabled": false,
 			"listen": "0.0.0.0:5554",
 			"timeout": "120s",
 			"maxConn": 8
