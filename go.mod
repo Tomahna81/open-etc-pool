@@ -1,4 +1,4 @@
-module github.com/etclabscore/open-etc-pool
+module github.com/Tomahna81/open-etc-pool
 
 go 1.15
 
