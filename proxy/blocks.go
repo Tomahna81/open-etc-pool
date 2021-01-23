@@ -9,8 +9,8 @@ import (
 
 	"github.com/ethereum/go-ethereum/common"
 
-	"github.com/etclabscore/open-etc-pool/rpc"
-	"github.com/etclabscore/open-etc-pool/util"
+	"github.com/Tomahna81/open-etc-pool/rpc"
+	"github.com/Tomahna81/open-etc-pool/util"
 )
 
 const maxBacklog = 3
@@ -94,6 +94,11 @@ func (s *ProxyServer) fetchBlockTemplate() {
 	if s.config.Proxy.Stratum.Enabled {
 		go s.broadcastNewJobs()
 	}
+	// Stratum SSL
+	if s.config.Proxy.StratumSSL.Enabled {
+		go s.broadcastSSLNewJobs()
+	}
+
 }
 
 func (s *ProxyServer) fetchPendingBlock() (*rpc.GetBlockReplyPart, uint64, int64, error) {

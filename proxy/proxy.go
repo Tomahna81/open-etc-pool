@@ -13,10 +13,10 @@ import (
 
 	"github.com/gorilla/mux"
 
-	"github.com/etclabscore/open-etc-pool/policy"
-	"github.com/etclabscore/open-etc-pool/rpc"
-	"github.com/etclabscore/open-etc-pool/storage"
-	"github.com/etclabscore/open-etc-pool/util"
+	"github.com/Tomahna81/open-etc-pool/policy"
+	"github.com/Tomahna81/open-etc-pool/rpc"
+	"github.com/Tomahna81/open-etc-pool/storage"
+	"github.com/Tomahna81/open-etc-pool/util"
 )
 
 type ProxyServer struct {
@@ -50,6 +50,7 @@ type Session struct {
 	// Stratum
 	sync.Mutex
 	conn           *net.TCPConn
+	sslconn        net.Conn
 	login          string
 	subscriptionID string
 	JobDeatils     jobDetails
@@ -74,6 +75,11 @@ func NewProxy(cfg *Config, backend *storage.RedisClient) *ProxyServer {
 	if cfg.Proxy.Stratum.Enabled {
 		proxy.sessions = make(map[*Session]struct{})
 		go proxy.ListenTCP()
+	}
+	if cfg.Proxy.StratumSSL.Enabled {
+		proxy.sessions = make(map[*Session]struct{})
+		go proxy.ListenSSLTCP()
+		log.Printf("Listening on SSL")
 	}
 
 	proxy.fetchBlockTemplate()

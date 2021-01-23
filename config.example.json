@@ -1,16 +1,16 @@
 {
-	"threads": 2,
+	"threads": 1,
 	"coin": "etc",
 	"name": "main",
 	"network": "classic",
 
 	"proxy": {
 		"enabled": true,
-		"listen": "0.0.0.0:8888",
+		"listen": "0.0.0.0:40001",
 		"limitHeadersSize": 1024,
 		"limitBodySize": 256,
 		"behindReverseProxy": false,
-		"blockRefreshInterval": "120ms",
+		"blockRefreshInterval": "100ms",
 		"stateUpdateInterval": "3s",
 		"difficulty": 2000000000,
 		"hashrateExpiration": "3h",
@@ -20,11 +20,19 @@
 
 		"stratum": {
 			"enabled": true,
-			"listen": "0.0.0.0:8008",
+			"listen": "0.0.0.0:5554",
 			"timeout": "120s",
-			"maxConn": 8192
+			"maxConn": 8
 		},
+		"stratum_ssl": {
+			"enabled": true,
+			"listen": "0.0.0.0:5555",
+			"timeout": "120s",
+			"maxConn": 8,
+			"certfile": "~/certificates/self/pub.crt",
+			"certkey": "~/certificates/self/priv.key"
 
+		},
 		"policy": {
 			"workers": 8,
 			"resetInterval": "60m",
@@ -33,7 +41,7 @@
 			"banning": {
 				"enabled": false,
 				"ipset": "blacklist",
-				"timeout": 1800,
+				"timeout": 300,
 				"invalidPercent": 30,
 				"checkThreshold": 30,
 				"malformedLimit": 5
@@ -63,8 +71,8 @@
 	"upstreamCheckInterval": "5s",
 	"upstream": [
 		{
-			"name": "main",
-			"url": "http://127.0.0.1:8545",
+			"name": "geth",
+			"url": "http://192.168.0.15:8545",
 			"timeout": "10s"
 		},
 		{
@@ -75,10 +83,10 @@
 	],
 
 	"redis": {
-		"endpoint": "127.0.0.1:6379",
+		"endpoint": "192.168.0.15:6379",
 		"poolSize": 10,
 		"database": 0,
-		"password": ""
+		"password": "19x310l19bjc493"
 	},
 
 	"unlocker": {
@@ -89,7 +97,7 @@
 		"immatureDepth": 20,
 		"keepTxFees": false,
 		"interval": "10m",
-		"daemon": "http://127.0.0.1:8545",
+		"daemon": "http://192.168.0.15:8545",
 		"timeout": "10s"
 	},
 
@@ -97,9 +105,9 @@
 		"enabled": false,
 		"requirePeers": 25,
 		"interval": "120m",
-		"daemon": "http://127.0.0.1:8545",
+		"daemon": "http://192.168.0.15:8545",
 		"timeout": "10s",
-		"address": "0x0",
+		"address": "0x2919c9fB8d2EE0cC95E495DBC2Db4D157834A159",
 		"gas": "21000",
 		"gasPrice": "50000000000",
 		"autoGas": true,

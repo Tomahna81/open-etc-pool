@@ -6,6 +6,7 @@ require (
 	github.com/btcsuite/btcd v0.21.0-beta // indirect
 	github.com/edsrzf/mmap-go v1.0.0
 	github.com/etclabscore/go-etchash v0.0.0-20201116172336-ee6bd2e29b29
+	github.com/etclabscore/open-etc-pool v0.0.0-20201204125529-78071cf27e79
 	github.com/ethereum/go-ethereum v1.9.24
 	github.com/garyburd/redigo v1.6.2 // indirect
 	github.com/gorilla/mux v1.8.0

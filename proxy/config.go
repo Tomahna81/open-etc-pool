@@ -1,10 +1,10 @@
 package proxy
 
 import (
-	"github.com/etclabscore/open-etc-pool/api"
-	"github.com/etclabscore/open-etc-pool/payouts"
-	"github.com/etclabscore/open-etc-pool/policy"
-	"github.com/etclabscore/open-etc-pool/storage"
+	"github.com/Tomahna81/open-etc-pool/api"
+	"github.com/Tomahna81/open-etc-pool/payouts"
+	"github.com/Tomahna81/open-etc-pool/policy"
+	"github.com/Tomahna81/open-etc-pool/storage"
 )
 
 type Config struct {
@@ -46,7 +46,8 @@ type Proxy struct {
 	HealthCheck bool  `json:"healthCheck"`
 
 	Stratum Stratum `json:"stratum"`
-
+	StratumSSL StratumSSL `json:"stratum_ssl"`
+	
 	StratumNiceHash StratumNiceHash `json:"stratum_nice_hash"`
 }
 
@@ -55,6 +56,15 @@ type Stratum struct {
 	Listen  string `json:"listen"`
 	Timeout string `json:"timeout"`
 	MaxConn int    `json:"maxConn"`
+}
+
+type StratumSSL struct {
+	Enabled  bool   `json:"enabled"`
+	Listen   string `json:"listen"`
+	Timeout  string `json:"timeout"`
+	MaxConn  int    `json:"maxConn"`
+	CertFile string `json:"certfile"`
+	CertKey  string `json:"certkey"`
 }
 
 type StratumNiceHash struct {

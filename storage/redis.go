@@ -9,7 +9,7 @@ import (
 
 	"gopkg.in/redis.v3"
 
-	"github.com/etclabscore/open-etc-pool/util"
+	"github.com/Tomahna81/open-etc-pool/util"
 )
 
 type Config struct {
