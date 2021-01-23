@@ -6,7 +6,7 @@
 
 ### Features
 
-**This pool is being further developed to provide an easy to use pool for Ethereum Classic miners. This software is functional however an optimised release of the pool is expected soon. Testing and bug submissions are welcome!**
+**This pool is configured mostly to work with Ethereum Classic miners. **
 
 * Support for HTTP, Stratum mining and **Stratum+SSL mining (new)**
 * Detailed block stats with luck percentage and full reward
@@ -130,12 +130,21 @@ otherwise you will get errors on start because of JSON comments.**
 
     // Stratum mining endpoint
     "stratum": {
-      "enabled": true,
+      "enabled": false,
       // Bind stratum mining socket to this IP:PORT
       "listen": "0.0.0.0:8008",
       "timeout": "120s",
       "maxConn": 8192
     },
+		 // Stratum+SSL mining endpoint. Warning: cannot be used jointly with Stratum. To run both, start two separate instances of the proxy
+   "stratum_ssl": {
+			"enabled": true,
+			"listen": "0.0.0.0:5555",
+			"timeout": "120s",
+			"maxConn": 8,
+			"certfile": "~/certificates/self/pub.crt",
+			"certkey": "~/certificates/self/priv.key"
+		},
 
     // Try to get new job from geth in this interval
     "blockRefreshInterval": "120ms",
