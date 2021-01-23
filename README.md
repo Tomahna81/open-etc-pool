@@ -1,3 +1,5 @@
+### Fork of https://github.com/etclabscore/open-etc-pool that adds SSL support
+
 ## Open Source Ethereum Classic Mining Pool
 
 ### WARNING: This code is currently configured for the Ethereum Classic main network
@@ -6,7 +8,7 @@
 
 **This pool is being further developed to provide an easy to use pool for Ethereum Classic miners. This software is functional however an optimised release of the pool is expected soon. Testing and bug submissions are welcome!**
 
-* Support for HTTP and Stratum mining
+* Support for HTTP, Stratum mining and **Stratum+SSL mining (new)**
 * Detailed block stats with luck percentage and full reward
 * Failover geth instances: geth high availability built in
 * Modern beautiful Ember.js frontend
